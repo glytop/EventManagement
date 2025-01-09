@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "MmRfsoEfsEBcXCSMeF13qLYW3ZNRrGbotNwq8CIG6s4=",
+  "Source": "EventsWebApp",
+  "BasePath": "_content/EventsWebApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
