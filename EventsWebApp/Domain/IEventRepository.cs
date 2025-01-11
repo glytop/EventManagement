@@ -7,5 +7,7 @@
         Task AddAsync(Event evnt);
         Task UpdateAsync(Event evnt);
         Task DeleteAsync(int id);
+        IQueryable<Event> GetAllQueryable();
+
     }
 }

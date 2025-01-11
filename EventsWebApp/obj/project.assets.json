@@ -5139,11 +5139,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.csproj",
       "projectName": "EventsWebApp",
-      "projectPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp.csproj",
+      "projectPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\obj\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

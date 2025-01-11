@@ -1,5 +1,6 @@
 using EventsWebApp.Domain;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventsWebApp.Controllers
 {
@@ -15,13 +16,41 @@ namespace EventsWebApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll() => Ok(await _repository.GetAllAsync());
+        public async Task<IActionResult> GetAll([FromQuery] PaginationParams paginationParams)
+        {
+            var eventsQuery = _repository.GetAllQueryable();
+
+            var pagedEvents = await eventsQuery
+                .Skip((paginationParams.PageNumber - 1) * paginationParams.PageSize)
+                .Take(paginationParams.PageSize)
+                .ToListAsync();
+
+            var totalItems = await eventsQuery.CountAsync();
+
+            var response = new
+            {
+                Data = pagedEvents,
+                Pagination = new
+                {
+                    CurrentPage = paginationParams.PageNumber,
+                    paginationParams.PageSize,
+                    TotalItems = totalItems,
+                    TotalPages = (int)Math.Ceiling(totalItems / (double)paginationParams.PageSize)
+                }
+            };
+
+            return Ok(response);
+        }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var evnt = await _repository.GetByIdAsync(id);
-            if (evnt == null) return NotFound();
+            if (evnt is null)
+            {
+                return NotFound();
+            }
             return Ok(evnt);
         }
 
@@ -29,13 +58,19 @@ namespace EventsWebApp.Controllers
         public async Task<IActionResult> Create(Event evnt)
         {
             await _repository.AddAsync(evnt);
-            return CreatedAtAction(nameof(GetById), new { id = evnt.Id }, evnt);
+            return CreatedAtAction(nameof(GetById), new
+            {
+                kid = evnt.Id
+            }, evnt);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Event evnt)
         {
-            if (id != evnt.Id) return BadRequest();
+            if (id != evnt.Id)
+            {
+                return BadRequest();
+            }
             await _repository.UpdateAsync(evnt);
             return NoContent();
         }
