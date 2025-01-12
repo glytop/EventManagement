@@ -4,6 +4,7 @@ using EventsWebApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventsWebApp.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250112151447_AddUsersAndUpdateParticipants")]
+    partial class AddUsersAndUpdateParticipants
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,6 +109,9 @@ namespace EventsWebApp.Infrastructure.Persistence.Migrations
                     b.Property<int>("EventId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("EventId1")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("RegisteredAt")
                         .HasColumnType("datetime2");
 
@@ -116,6 +122,8 @@ namespace EventsWebApp.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("EventId");
 
+                    b.HasIndex("EventId1");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Participants");
@@ -124,10 +132,14 @@ namespace EventsWebApp.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("EventsWebApp.Domain.Participant", b =>
                 {
                     b.HasOne("EventsWebApp.Domain.Event", "Event")
-                        .WithMany("Participants")
+                        .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("EventsWebApp.Domain.Event", null)
+                        .WithMany("Participants")
+                        .HasForeignKey("EventId1");
 
                     b.HasOne("EventsWebApp.Domain.Entities.User", "User")
                         .WithMany("Participants")

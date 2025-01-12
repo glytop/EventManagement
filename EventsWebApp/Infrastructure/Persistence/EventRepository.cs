@@ -63,5 +63,34 @@ namespace EventsWebApp.Infrastructure.Persistence
             return _context.Events.AsQueryable();
         }
 
+        public async Task<Event> GetByNameAsync(string name)
+        {
+            return await _context
+                .Events
+                .FirstOrDefaultAsync(e => e.Name == name);
+        }
+
+        public async Task<List<Event>> GetByCriteriaAsync(EventSearchCriteria criteria)
+        {
+            var query = _context.Events.AsQueryable();
+
+            if (criteria.Date.HasValue)
+            {
+                query = query.Where(e => e.Date.Date == criteria.Date.Value.Date);
+            }
+
+            if (!string.IsNullOrEmpty(criteria.Location))
+            {
+                query = query.Where(e => e.Location.Contains(criteria.Location));
+            }
+
+            if (!string.IsNullOrEmpty(criteria.Category))
+            {
+                query = query.Where(e => e.Category.Contains(criteria.Category));
+            }
+
+            return await query.ToListAsync();
+        }
+
     }
 }

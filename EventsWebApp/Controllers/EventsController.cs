@@ -54,6 +54,24 @@ namespace EventsWebApp.Controllers
             return Ok(evnt);
         }
 
+        [HttpGet("by-name/{name}")]
+        public async Task<IActionResult> GetByName(string name)
+        {
+            var evnt = await _repository.GetByNameAsync(name);
+            if (evnt is null)
+            {
+                return NotFound();
+            }
+            return Ok(evnt);
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> GetByCriteria([FromQuery] EventSearchCriteria criteria)
+        {
+            var events = await _repository.GetByCriteriaAsync(criteria);
+            return Ok(events);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(Event evnt)
         {

@@ -8,6 +8,8 @@
         Task UpdateAsync(Event evnt);
         Task DeleteAsync(int id);
         IQueryable<Event> GetAllQueryable();
+        Task<Event> GetByNameAsync(string name);
+        Task<List<Event>> GetByCriteriaAsync(EventSearchCriteria criteria);
 
     }
 }

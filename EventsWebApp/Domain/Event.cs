@@ -10,5 +10,6 @@
         public string Category { get; set; } = string.Empty;
         public int MaxParticipants { get; set; }
         public ICollection<Participant> Participants { get; set; } = new List<Participant>();
+        public string? ImagePath { get; set; }
     }
 }

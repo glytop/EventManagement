@@ -1,4 +1,5 @@
-﻿using EventsWebApp.Domain.Entities;
+﻿using EventsWebApp.Domain;
+using EventsWebApp.Domain.Entities;
 using EventsWebApp.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,43 +9,44 @@ namespace EventsWebApp.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private JwtTokenService _jwtTokenService;
+        private readonly IUserRepository _userRepository;
+        private readonly JwtTokenService _jwtTokenService;
 
-        private static List<User> Users = new()
+        public AuthController(IUserRepository userRepository, JwtTokenService jwtTokenService)
         {
-            new User
-            {
-                Id = 1,
-                Username = "admin",
-                Email = "admin@example.com",
-                PasswordHash = "admin",
-                Roles = new List<string> { "Admin" }
-            }
-        };
-
-        public AuthController(JwtTokenService jwtTokenService)
-        {
+            _userRepository = userRepository;
             _jwtTokenService = jwtTokenService;
         }
 
-        [HttpPost("login")]
-        public IActionResult Login(LoginRequest request)
-        {
-            var user = Users.FirstOrDefault(u => u.Username == request.Username && u.PasswordHash == request.Password);
 
-            if (user is null)
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        {
+            var user = await _userRepository.GetUserByEmailAsync(request.Email);
+
+            if (user == null || user.PasswordHash != request.Password)
             {
-                return Unauthorized(new
-                {
-                    Message = "Invalid credentials"
-                });
+                return Unauthorized(new { Message = "Invalid credentials." });
             }
 
             var token = _jwtTokenService.GenerateToken(user);
-            return Ok(new
+
+            return Ok(new { Token = token });
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(User user)
+        {
+            var existingUser = await _userRepository.GetUserByEmailAsync(user.Email);
+            if (existingUser != null)
             {
-                Token = token
-            });
+                return Conflict(new { Message = "User with this email already exists." });
+            }
+
+            user.CreatedAt = DateTime.UtcNow;
+            var registeredUser = await _userRepository.RegisterUserAsync(user);
+
+            return CreatedAtAction(nameof(Register), new { id = registeredUser.Id }, registeredUser);
         }
     }
 }

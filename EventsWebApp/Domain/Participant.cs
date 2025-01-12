@@ -1,12 +1,17 @@
-﻿namespace EventsWebApp.Domain
+﻿using EventsWebApp.Domain.Entities;
+
+namespace EventsWebApp.Domain
 {
     public class Participant
     {
         public int Id { get; set; }
-        public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public DateTime BirthDate { get; set; }
-        public DateTime RegistrationDate { get; set; }
-        public string Email { get; set; } = string.Empty;
+
+        public int UserId { get; set; }
+        public User User { get; set; } = null!;
+
+        public int EventId { get; set; }
+        public Event Event { get; set; } = null!;
+
+        public DateTime RegisteredAt { get; set; } = DateTime.UtcNow;
     }
 }
