@@ -12,6 +12,13 @@ namespace EventsWebApp.Infrastructure.Persistence
             _context = context;
         }
 
+        public async Task<Event> UpdateEventAsync(Event eventEntity)
+        {
+            _context.Events.Update(eventEntity);
+            await _context.SaveChangesAsync();
+            return eventEntity;
+        }
+
         public async Task<IEnumerable<Event>> GetAllAsync()
         {
             return await _context

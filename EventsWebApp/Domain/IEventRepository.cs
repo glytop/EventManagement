@@ -10,6 +10,6 @@
         IQueryable<Event> GetAllQueryable();
         Task<Event> GetByNameAsync(string name);
         Task<List<Event>> GetByCriteriaAsync(EventSearchCriteria criteria);
-
+        Task<Event> UpdateEventAsync(Event eventEntity);
     }
 }

@@ -128,6 +128,27 @@
   },
   {
     "ContainingType": "EventsWebApp.Controllers.EventsController",
+    "Method": "AddImageUrl",
+    "RelativePath": "api/Events/{id}/add-image-url",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "imageUrl",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventsWebApp.Controllers.EventsController",
     "Method": "GetByName",
     "RelativePath": "api/Events/by-name/{name}",
     "HttpMethod": "GET",

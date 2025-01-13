@@ -42,6 +42,32 @@ namespace EventsWebApp.Controllers
             return Ok(response);
         }
 
+        [HttpPost("{id}/add-image-url")]
+        public async Task<IActionResult> AddImageUrl(int id, [FromBody] string imageUrl)
+        {
+            if (string.IsNullOrWhiteSpace(imageUrl))
+            {
+                return BadRequest(new { Message = "Image URL is required." });
+            }
+
+            var evnt = await _repository.GetByIdAsync(id);
+            if (evnt is null)
+            {
+                return NotFound(new { Message = "Event not found." });
+            }
+
+            evnt.ImagePath = imageUrl;
+            await _repository.UpdateEventAsync(evnt);
+
+            return Ok(new
+            {
+                Message = "Image URL updated successfully.",
+                evnt.ImagePath
+            });
+        }
+
+
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
@@ -49,9 +75,30 @@ namespace EventsWebApp.Controllers
             var evnt = await _repository.GetByIdAsync(id);
             if (evnt is null)
             {
-                return NotFound();
+                return NotFound(new { Message = "Event not found." });
             }
-            return Ok(evnt);
+
+            var result = new
+            {
+                evnt.Id,
+                evnt.Name,
+                evnt.Description,
+                evnt.Date,
+                evnt.Location,
+                evnt.Category,
+                evnt.MaxParticipants,
+                evnt.ImagePath,
+                Participants = evnt.Participants.Select(p => new
+                {
+                    p.Id,
+                    p.User.FirstName,
+                    p.User.LastName,
+                    p.User.Email
+                })
+                .ToList()
+            };
+
+            return Ok(result);
         }
 
         [HttpGet("by-name/{name}")]
