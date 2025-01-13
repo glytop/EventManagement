@@ -24,9 +24,12 @@ namespace EventsWebApp.Controllers
         {
             var user = await _userRepository.GetUserByEmailAsync(request.Email);
 
-            if (user == null || user.PasswordHash != request.Password)
+            if (user is null || user.PasswordHash != request.Password)
             {
-                return Unauthorized(new { Message = "Invalid credentials." });
+                return Unauthorized(new
+                {
+                    Message = "Invalid credentials."
+                });
             }
 
             var token = _jwtTokenService.GenerateToken(user);
@@ -38,15 +41,21 @@ namespace EventsWebApp.Controllers
         public async Task<IActionResult> Register(User user)
         {
             var existingUser = await _userRepository.GetUserByEmailAsync(user.Email);
-            if (existingUser != null)
+            if (existingUser is not null)
             {
-                return Conflict(new { Message = "User with this email already exists." });
+                return Conflict(new
+                {
+                    Message = "User with this email already exists."
+                });
             }
 
             user.CreatedAt = DateTime.UtcNow;
             var registeredUser = await _userRepository.RegisterUserAsync(user);
 
-            return CreatedAtAction(nameof(Register), new { id = registeredUser.Id }, registeredUser);
+            return CreatedAtAction(nameof(Register), new
+            {
+                id = registeredUser.Id
+            }, registeredUser);
         }
     }
 }

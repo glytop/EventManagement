@@ -20,11 +20,17 @@ namespace EventsWebApp.Controllers
             try
             {
                 var registeredParticipant = await _participantRepository.RegisterParticipantAsync(participant);
-                return CreatedAtAction(nameof(GetParticipantById), new { id = registeredParticipant.Id }, registeredParticipant);
+                return CreatedAtAction(nameof(GetParticipantById), new
+                {
+                    id = registeredParticipant.Id
+                }, registeredParticipant);
             }
             catch (InvalidOperationException ex)
             {
-                return BadRequest(new { ex.Message });
+                return BadRequest(new
+                {
+                    ex.Message
+                });
             }
         }
 
@@ -35,7 +41,10 @@ namespace EventsWebApp.Controllers
 
             if (participants.Count == 0)
             {
-                return NotFound(new { Message = "No participants found for this event." });
+                return NotFound(new
+                {
+                    Message = "No participants found for this event."
+                });
             }
 
             return Ok(participants);
@@ -46,9 +55,12 @@ namespace EventsWebApp.Controllers
         {
             var participant = await _participantRepository.GetParticipantByIdAsync(id);
 
-            if (participant == null)
+            if (participant is null)
             {
-                return NotFound(new { Message = "Participant not found." });
+                return NotFound(new
+                {
+                    Message = "Participant not found."
+                });
             }
 
             return Ok(participant);
@@ -61,7 +73,10 @@ namespace EventsWebApp.Controllers
 
             if (!success)
             {
-                return NotFound(new { Message = "Participant not found." });
+                return NotFound(new
+                {
+                    Message = "Participant not found."
+                });
             }
 
             return NoContent();

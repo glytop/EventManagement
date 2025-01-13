@@ -47,13 +47,19 @@ namespace EventsWebApp.Controllers
         {
             if (string.IsNullOrWhiteSpace(imageUrl))
             {
-                return BadRequest(new { Message = "Image URL is required." });
+                return BadRequest(new
+                {
+                    Message = "Image URL is required."
+                });
             }
 
             var evnt = await _repository.GetByIdAsync(id);
             if (evnt is null)
             {
-                return NotFound(new { Message = "Event not found." });
+                return NotFound(new
+                {
+                    Message = "Event not found."
+                });
             }
 
             evnt.ImagePath = imageUrl;
@@ -75,7 +81,10 @@ namespace EventsWebApp.Controllers
             var evnt = await _repository.GetByIdAsync(id);
             if (evnt is null)
             {
-                return NotFound(new { Message = "Event not found." });
+                return NotFound(new
+                {
+                    Message = "Event not found."
+                });
             }
 
             var result = new

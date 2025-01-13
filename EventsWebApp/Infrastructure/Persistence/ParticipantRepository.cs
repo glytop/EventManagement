@@ -16,7 +16,7 @@ namespace EventsWebApp.Infrastructure.Persistence
         {
             var participant = await _context.Participants.FindAsync(participantId);
 
-            if (participant == null)
+            if (participant is null)
             {
                 return false;
             }
@@ -48,13 +48,13 @@ namespace EventsWebApp.Infrastructure.Persistence
             var existingParticipant = await _context.Participants
                 .FirstOrDefaultAsync(p => p.UserId == participant.UserId && p.EventId == participant.EventId);
 
-            if (existingParticipant != null)
+            if (existingParticipant is not null)
             {
                 throw new InvalidOperationException("User is already registered for this event.");
             }
 
             var evnt = await _context.Events.FirstOrDefaultAsync(e => e.Id == participant.EventId);
-            if (evnt == null || evnt.Participants.Count >= evnt.MaxParticipants)
+            if (evnt is null || evnt.Participants.Count >= evnt.MaxParticipants)
             {
                 throw new InvalidOperationException("Cannot register, the event is full or does not exist.");
             }
