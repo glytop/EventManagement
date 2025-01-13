@@ -171,3 +171,4 @@ C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\obj\Debug\net8.0\refin
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\obj\Debug\net8.0\EventsWebApp.Test.pdb
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\obj\Debug\net8.0\EventsWebApp.Test.genruntimeconfig.cache
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\obj\Debug\net8.0\ref\EventsWebApp.Test.dll
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\FluentAssertions.dll
