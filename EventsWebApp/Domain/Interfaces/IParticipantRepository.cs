@@ -1,4 +1,4 @@
-﻿namespace EventsWebApp.Domain
+﻿namespace EventsWebApp.Domain.Interfaces
 {
     public interface IParticipantRepository
     {

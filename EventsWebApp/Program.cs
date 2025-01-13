@@ -1,4 +1,4 @@
-using EventsWebApp.Domain;
+using EventsWebApp.Domain.Interfaces;
 using EventsWebApp.Infrastructure.Middleware;
 using EventsWebApp.Infrastructure.Persistence;
 using EventsWebApp.Infrastructure.Services;

@@ -1,4 +1,5 @@
 using EventsWebApp.Domain;
+using EventsWebApp.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

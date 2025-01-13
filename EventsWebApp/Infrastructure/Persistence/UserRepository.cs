@@ -1,6 +1,6 @@
 ﻿using EventsWebApp.Domain.Entities;
-using EventsWebApp.Domain;
 using Microsoft.EntityFrameworkCore;
+using EventsWebApp.Domain.Interfaces;
 
 namespace EventsWebApp.Infrastructure.Persistence
 {

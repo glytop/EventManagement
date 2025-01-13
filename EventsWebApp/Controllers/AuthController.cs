@@ -1,5 +1,5 @@
-﻿using EventsWebApp.Domain;
-using EventsWebApp.Domain.Entities;
+﻿using EventsWebApp.Domain.Entities;
+using EventsWebApp.Domain.Interfaces;
 using EventsWebApp.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 
