@@ -188,5 +188,69 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventsWebApp.Controllers.ParticipantsController",
+    "Method": "GetParticipantById",
+    "RelativePath": "api/Participants/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventsWebApp.Controllers.ParticipantsController",
+    "Method": "CancelParticipation",
+    "RelativePath": "api/Participants/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventsWebApp.Controllers.ParticipantsController",
+    "Method": "GetParticipantsByEventId",
+    "RelativePath": "api/Participants/event/{eventId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "eventId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EventsWebApp.Controllers.ParticipantsController",
+    "Method": "RegisterParticipant",
+    "RelativePath": "api/Participants/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "participant",
+        "Type": "EventsWebApp.Domain.Participant",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
