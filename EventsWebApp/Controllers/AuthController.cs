@@ -34,7 +34,10 @@ namespace EventsWebApp.Controllers
 
             var token = _jwtTokenService.GenerateToken(user);
 
-            return Ok(new { Token = token });
+            return Ok(new
+            {
+                Token = token
+            });
         }
 
         [HttpPost("register")]
