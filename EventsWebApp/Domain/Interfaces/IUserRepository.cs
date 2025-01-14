@@ -1,6 +1,6 @@
-﻿using EventsWebApp.Domain.Entities;
+﻿using EventsWebApp.API.Domain.Entities;
 
-namespace EventsWebApp.Domain.Interfaces
+namespace EventsWebApp.API.Domain.Interfaces
 {
     public interface IUserRepository
     {

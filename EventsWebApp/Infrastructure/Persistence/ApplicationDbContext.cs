@@ -1,8 +1,8 @@
-﻿using EventsWebApp.Domain;
-using EventsWebApp.Domain.Entities;
+﻿using EventsWebApp.API.Domain;
+using EventsWebApp.API.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace EventsWebApp.Infrastructure.Persistence
+namespace EventsWebApp.API.Infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext
     {

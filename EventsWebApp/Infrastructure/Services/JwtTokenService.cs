@@ -1,10 +1,10 @@
-﻿using EventsWebApp.Domain.Entities;
+﻿using EventsWebApp.API.Domain.Entities;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace EventsWebApp.Infrastructure.Services
+namespace EventsWebApp.API.Infrastructure.Services
 {
     public class JwtTokenService
     {

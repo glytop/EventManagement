@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.csproj": {
-                "projectPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.csproj"
+              "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.API.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.API.csproj"
               }
             }
           }
@@ -94,12 +94,12 @@
         }
       }
     },
-    "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.csproj": {
+    "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.csproj",
-        "projectName": "EventsWebApp",
-        "projectPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.API.csproj",
+        "projectName": "EventsWebApp.API",
+        "projectPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.API.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\obj\\",
         "projectStyle": "PackageReference",

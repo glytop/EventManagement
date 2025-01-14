@@ -1,4 +1,4 @@
-﻿namespace EventsWebApp.Infrastructure.Middleware
+﻿namespace EventsWebApp.API.Infrastructure.Middleware
 {
     public class ExceptionMiddleware
     {

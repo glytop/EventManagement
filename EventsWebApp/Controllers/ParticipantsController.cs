@@ -1,8 +1,8 @@
-﻿using EventsWebApp.Domain;
-using EventsWebApp.Domain.Interfaces;
+﻿using EventsWebApp.API.Domain;
+using EventsWebApp.API.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EventsWebApp.Controllers
+namespace EventsWebApp.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

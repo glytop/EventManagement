@@ -1,7 +1,7 @@
-using EventsWebApp.Domain.Interfaces;
-using EventsWebApp.Infrastructure.Middleware;
-using EventsWebApp.Infrastructure.Persistence;
-using EventsWebApp.Infrastructure.Services;
+using EventsWebApp.API.Domain.Interfaces;
+using EventsWebApp.API.Infrastructure.Middleware;
+using EventsWebApp.API.Infrastructure.Persistence;
+using EventsWebApp.API.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace EventsWebApp.Infrastructure.Persistence.Migrations
+namespace EventsWebApp.API.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class FixBugMigration : Migration

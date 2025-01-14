@@ -2820,7 +2820,7 @@
           "build/net6.0/xunit.runner.visualstudio.props": {}
         }
       },
-      "EventsWebApp/1.0.0": {
+      "EventsWebApp.API/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -2835,10 +2835,10 @@
           "System.IdentityModel.Tokens.Jwt": "8.3.0"
         },
         "compile": {
-          "bin/placeholder/EventsWebApp.dll": {}
+          "bin/placeholder/EventsWebApp.API.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EventsWebApp.dll": {}
+          "bin/placeholder/EventsWebApp.API.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -8644,15 +8644,15 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "EventsWebApp/1.0.0": {
+    "EventsWebApp.API/1.0.0": {
       "type": "project",
-      "path": "../EventsWebApp/EventsWebApp.csproj",
-      "msbuildProject": "../EventsWebApp/EventsWebApp.csproj"
+      "path": "../EventsWebApp/EventsWebApp.API.csproj",
+      "msbuildProject": "../EventsWebApp/EventsWebApp.API.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "EventsWebApp >= 1.0.0",
+      "EventsWebApp.API >= 1.0.0",
       "FluentAssertions >= 8.0.0-rc.2",
       "Microsoft.EntityFrameworkCore.InMemory >= 9.0.0",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
@@ -8688,8 +8688,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.csproj"
+            "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.API.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.API.csproj"
             }
           }
         }

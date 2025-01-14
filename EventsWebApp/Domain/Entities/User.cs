@@ -1,4 +1,4 @@
-﻿namespace EventsWebApp.Domain.Entities
+﻿namespace EventsWebApp.API.Domain.Entities
 {
     public class User
     {

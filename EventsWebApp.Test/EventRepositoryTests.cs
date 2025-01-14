@@ -1,5 +1,5 @@
-﻿using EventsWebApp.Domain;
-using EventsWebApp.Infrastructure.Persistence;
+﻿using EventsWebApp.API.Domain;
+using EventsWebApp.API.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventsWebApp.Test

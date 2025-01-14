@@ -1,4 +1,4 @@
-﻿namespace EventsWebApp.Domain
+﻿namespace EventsWebApp.API.Domain
 {
     public class Event
     {

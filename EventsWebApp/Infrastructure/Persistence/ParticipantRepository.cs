@@ -1,8 +1,8 @@
-﻿using EventsWebApp.Domain;
-using EventsWebApp.Domain.Interfaces;
+﻿using EventsWebApp.API.Domain;
+using EventsWebApp.API.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace EventsWebApp.Infrastructure.Persistence
+namespace EventsWebApp.API.Infrastructure.Persistence
 {
     public class ParticipantRepository : IParticipantRepository
     {

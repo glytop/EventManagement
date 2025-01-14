@@ -1,4 +1,4 @@
-﻿namespace EventsWebApp.Domain
+﻿namespace EventsWebApp.API.Domain
 {
     public class PaginationParams
     {
@@ -9,7 +9,7 @@
         public int PageSizeLimited
         {
             get => PageSize;
-            set => PageSize = (value > MaxPageSize) ? MaxPageSize : value;
+            set => PageSize = value > MaxPageSize ? MaxPageSize : value;
         }
     }
 }
