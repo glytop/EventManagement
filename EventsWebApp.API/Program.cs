@@ -42,6 +42,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Register repositories and services
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IParticipantRepository, ParticipantRepository>();
 builder.Services.AddSingleton<JwtTokenService>();
 
 

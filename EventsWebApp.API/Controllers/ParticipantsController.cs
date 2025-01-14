@@ -16,23 +16,18 @@ namespace EventsWebApp.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterParticipant(Participant participant)
+        public async Task<IActionResult> RegisterParticipant(RegisterParticipantDto dto)
         {
-            try
+
+            var participant = new Participant
             {
-                var registeredParticipant = await _participantRepository.RegisterParticipantAsync(participant);
-                return CreatedAtAction(nameof(GetParticipantById), new
-                {
-                    id = registeredParticipant.Id
-                }, registeredParticipant);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(new
-                {
-                    ex.Message
-                });
-            }
+                UserId = dto.UserId,
+                EventId = dto.EventId
+            };
+
+            var registeredParticipant = await _participantRepository.RegisterParticipantAsync(participant);
+
+            return Ok();
         }
 
         [HttpGet("event/{eventId}")]
@@ -80,7 +75,7 @@ namespace EventsWebApp.API.Controllers
                 });
             }
 
-            return NoContent();
+            return Ok();
         }
     }
 }

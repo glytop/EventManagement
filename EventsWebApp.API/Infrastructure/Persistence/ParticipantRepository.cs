@@ -28,21 +28,37 @@ namespace EventsWebApp.API.Infrastructure.Persistence
         }
 
 
-        public async Task<Participant?> GetParticipantByIdAsync(int participantId)
+        public async Task<ParticipantDto?> GetParticipantByIdAsync(int participantId)
         {
             return await _context.Participants
-                .Include(p => p.User)
-                .Include(p => p.Event)
-                .FirstOrDefaultAsync(p => p.Id == participantId);
+                .Where(p => p.Id == participantId)
+                .Select(p => new ParticipantDto
+                {
+                    Id = p.Id,
+                    UserId = p.UserId,
+                    UserName = $"{p.User.FirstName} {p.User.LastName}",
+                    EventId = p.EventId,
+                    EventName = p.Event.Name,
+                    RegisteredAt = p.RegisteredAt
+                })
+                .FirstOrDefaultAsync();
         }
 
-        public async Task<List<Participant>> GetParticipantsByEventIdAsync(int eventId)
+        public async Task<List<ParticipantDto>> GetParticipantsByEventIdAsync(int eventId)
         {
             return await _context.Participants
                 .Where(p => p.EventId == eventId)
-                .Include(p => p.User)
+                .Select(p => new ParticipantDto
+                {
+                    Id = p.Id,
+                    UserId = p.UserId,
+                    UserName = $"{p.User.FirstName} {p.User.LastName}",
+                    EventId = p.EventId,
+                    RegisteredAt = p.RegisteredAt
+                })
                 .ToListAsync();
         }
+
 
         public async Task<Participant?> RegisterParticipantAsync(Participant participant)
         {

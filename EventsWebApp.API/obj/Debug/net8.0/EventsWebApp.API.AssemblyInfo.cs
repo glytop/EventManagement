@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EventsWebApp.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa52fb101712d904d7b4b22e793bdddf724bf934")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+305d61c533deb932dfde03be63c2f4a8a46923dc")]
 [assembly: System.Reflection.AssemblyProductAttribute("EventsWebApp.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EventsWebApp.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

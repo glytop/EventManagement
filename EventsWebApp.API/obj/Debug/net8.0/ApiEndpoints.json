@@ -241,8 +241,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "participant",
-        "Type": "EventsWebApp.API.Domain.Participant",
+        "Name": "dto",
+        "Type": "EventsWebApp.API.Domain.RegisterParticipantDto",
         "IsRequired": true
       }
     ],
