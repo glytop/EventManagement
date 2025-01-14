@@ -1,10 +1,7 @@
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\CoverletSourceRootsMapping_EventsWebApp.Test
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\testhost.dll
-C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.deps.json
-C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.runtimeconfig.json
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\appsettings.json
-C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.exe
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\testhost.exe
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\xunit.runner.reporters.netcoreapp10.dll
@@ -157,8 +154,6 @@ C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\runti
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.dll
-C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.pdb
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\obj\Debug\net8.0\EventsWebApp.Test.csproj.AssemblyReference.cache
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\obj\Debug\net8.0\EventsWebApp.Test.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\obj\Debug\net8.0\EventsWebApp.Test.AssemblyInfoInputs.cache
@@ -172,3 +167,8 @@ C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\obj\Debug\net8.0\Event
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\obj\Debug\net8.0\EventsWebApp.Test.genruntimeconfig.cache
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\obj\Debug\net8.0\ref\EventsWebApp.Test.dll
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\FluentAssertions.dll
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.API.deps.json
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.API.runtimeconfig.json
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.API.exe
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.API.dll
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.API.pdb

@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "EventsWebApp.Test/1.0.0": {
         "dependencies": {
-          "EventsWebApp": "1.0.0",
+          "EventsWebApp.API": "1.0.0",
           "FluentAssertions": "8.0.0-rc.2",
           "Microsoft.EntityFrameworkCore.InMemory": "9.0.0",
           "Microsoft.NET.Test.Sdk": "17.8.0",
@@ -1706,7 +1706,7 @@
         }
       },
       "xunit.runner.visualstudio/2.5.3": {},
-      "EventsWebApp/1.0.0": {
+      "EventsWebApp.API/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "FluentValidation.AspNetCore": "11.3.0",
@@ -1719,7 +1719,7 @@
           "System.IdentityModel.Tokens.Jwt": "8.3.0"
         },
         "runtime": {
-          "EventsWebApp.dll": {
+          "EventsWebApp.API.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -2797,7 +2797,7 @@
       "path": "xunit.runner.visualstudio/2.5.3",
       "hashPath": "xunit.runner.visualstudio.2.5.3.nupkg.sha512"
     },
-    "EventsWebApp/1.0.0": {
+    "EventsWebApp.API/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
