@@ -78,23 +78,38 @@ namespace EventsWebApp.API.Infrastructure.Persistence
                 .FirstOrDefaultAsync(e => e.Name == name);
         }
 
-        public async Task<List<Event>> GetByCriteriaAsync(EventSearchCriteria criteria)
+        public async Task<List<Event>> GetByCriteriaAsync(string criterion, string value)
         {
+            if (string.IsNullOrEmpty(criterion) || string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Criterion and value must be provided.");
+            }
+
             var query = _context.Events.AsQueryable();
 
-            if (criteria.Date.HasValue)
+            switch (criterion.ToLower())
             {
-                query = query.Where(e => e.Date.Date == criteria.Date.Value.Date);
-            }
-
-            if (!string.IsNullOrEmpty(criteria.Location))
-            {
-                query = query.Where(e => e.Location.Contains(criteria.Location));
-            }
-
-            if (!string.IsNullOrEmpty(criteria.Category))
-            {
-                query = query.Where(e => e.Category.Contains(criteria.Category));
+                case "name":
+                    query = query.Where(e => e.Name.Contains(value));
+                    break;
+                case "location":
+                    query = query.Where(e => e.Location.Contains(value));
+                    break;
+                case "category":
+                    query = query.Where(e => e.Category.Contains(value));
+                    break;
+                case "date":
+                    if (DateTime.TryParse(value, out DateTime parsedDate))
+                    {
+                        query = query.Where(e => e.Date.Date == parsedDate.Date);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid date format. Use YYYY-MM-DD.");
+                    }
+                    break;
+                default:
+                    throw new ArgumentException("Invalid criterion. Valid criteria: name, location, category, date.");
             }
 
             return await query.ToListAsync();

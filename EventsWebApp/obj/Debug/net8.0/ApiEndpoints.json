@@ -140,8 +140,8 @@
         "IsRequired": true
       },
       {
-        "Name": "imageUrl",
-        "Type": "System.String",
+        "Name": "request",
+        "Type": "EventsWebApp.API.Domain.Event",
         "IsRequired": true
       }
     ],
@@ -172,17 +172,12 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Date",
-        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "Location",
+        "Name": "criterion",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "Category",
+        "Name": "value",
         "Type": "System.String",
         "IsRequired": false
       }

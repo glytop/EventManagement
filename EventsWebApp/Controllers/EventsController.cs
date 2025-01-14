@@ -44,32 +44,23 @@ namespace EventsWebApp.API.Controllers
         }
 
         [HttpPost("{id}/add-image-url")]
-        public async Task<IActionResult> AddImageUrl(int id, [FromBody] string imageUrl)
+        public async Task<IActionResult> AddImageUrl(int id, [FromBody] Event request)
         {
-            if (string.IsNullOrWhiteSpace(imageUrl))
-            {
-                return BadRequest(new
-                {
-                    Message = "Image URL is required."
-                });
-            }
-
             var evnt = await _repository.GetByIdAsync(id);
             if (evnt is null)
             {
                 return NotFound(new
                 {
-                    Message = "Event not found."
+                    Message = $"Event with ID {id} not found."
                 });
             }
 
-            evnt.ImagePath = imageUrl;
-            await _repository.UpdateEventAsync(evnt);
+            evnt.ImagePath = request.ImagePath;
+            await _repository.UpdateAsync(evnt);
 
             return Ok(new
             {
-                Message = "Image URL updated successfully.",
-                evnt.ImagePath
+                Message = "Image URL added successfully."
             });
         }
 
@@ -123,9 +114,13 @@ namespace EventsWebApp.API.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> GetByCriteria([FromQuery] EventSearchCriteria criteria)
+        public async Task<IActionResult> GetByCriteria([FromQuery] string criterion, [FromQuery] string value)
         {
-            var events = await _repository.GetByCriteriaAsync(criteria);
+            var events = await _repository.GetByCriteriaAsync(criterion, value);
+            if (events is null)
+            {
+                return NotFound();
+            }
             return Ok(events);
         }
 
@@ -133,10 +128,7 @@ namespace EventsWebApp.API.Controllers
         public async Task<IActionResult> Create(Event evnt)
         {
             await _repository.AddAsync(evnt);
-            return CreatedAtAction(nameof(GetById), new
-            {
-                kid = evnt.Id
-            }, evnt);
+            return Ok(evnt);
         }
 
         [HttpPut("{id}")]
@@ -147,14 +139,14 @@ namespace EventsWebApp.API.Controllers
                 return BadRequest();
             }
             await _repository.UpdateAsync(evnt);
-            return NoContent();
+            return Ok(evnt);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _repository.DeleteAsync(id);
-            return NoContent();
+            return Ok();
         }
     }
 }

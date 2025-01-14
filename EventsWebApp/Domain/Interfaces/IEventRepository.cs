@@ -9,7 +9,7 @@
         Task DeleteAsync(int id);
         IQueryable<Event> GetAllQueryable();
         Task<Event> GetByNameAsync(string name);
-        Task<List<Event>> GetByCriteriaAsync(EventSearchCriteria criteria);
+        Task<List<Event>> GetByCriteriaAsync(string criterion, string value);
         Task<Event> UpdateEventAsync(Event eventEntity);
     }
 }
