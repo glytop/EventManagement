@@ -45,7 +45,7 @@ Update-Database
        "dateOfBirth": "2004-01-01T00:00:00"
      }
      ```
-     - Отправьте POST-запрос с запущенным проектом на `http://localhost:{ваши цифры}/api/Auth/login` с телом:
+   - Отправьте POST-запрос с запущенным проектом на `http://localhost:{ваши цифры}/api/Auth/login` с телом:
      ```json
      {
        "email": "email@email.com",
