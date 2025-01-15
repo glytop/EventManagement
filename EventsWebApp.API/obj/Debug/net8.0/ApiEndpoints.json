@@ -164,43 +164,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "EventsWebApp.API.Controllers.EventsController",
-    "Method": "GetByName",
-    "RelativePath": "api/Events/by-name/{name}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "name",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EventsWebApp.API.Controllers.EventsController",
-    "Method": "GetByCriteria",
-    "RelativePath": "api/Events/search",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "criterion",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "value",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "EventsWebApp.API.Controllers.ParticipantsController",
     "Method": "GetParticipantById",
     "RelativePath": "api/Participants/{id}",
