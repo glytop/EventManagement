@@ -1,5 +1,6 @@
 ﻿using EventsWebApp.API.Domain;
 using EventsWebApp.API.Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsWebApp.API.Controllers
@@ -63,6 +64,7 @@ namespace EventsWebApp.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "MustBeResourceOwner")]
         public async Task<IActionResult> CancelParticipation(int id)
         {
             var success = await _unitOfWork.Participants.CancelParticipationAsync(id);

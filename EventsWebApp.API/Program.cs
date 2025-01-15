@@ -5,6 +5,7 @@ using EventsWebApp.API.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +30,20 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]))
     };
 });
+
+// Policy-based
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("MustBeResourceOwner", policy =>
+    {
+        policy.RequireClaim(ClaimTypes.NameIdentifier);
+        policy.RequireAssertion(context =>
+        {
+            var userIdClaim = context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var resourceId = context.Resource?.ToString();
+
+            return userIdClaim != null && resourceId == userIdClaim;
+        });
+    });
 
 // Add services to the container.
 builder.Services.AddControllers();

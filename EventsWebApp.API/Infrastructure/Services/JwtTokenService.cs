@@ -9,7 +9,7 @@ namespace EventsWebApp.API.Infrastructure.Services
 {
     public class JwtTokenService
     {
-        private IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
 
         public JwtTokenService(IConfiguration configuration)
         {
@@ -34,6 +34,8 @@ namespace EventsWebApp.API.Infrastructure.Services
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
+                new Claim("FirstName", user.FirstName),
+                new Claim("LastName", user.LastName)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!));
