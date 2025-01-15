@@ -1,6 +1,4 @@
-﻿using EventsWebApp.API.Domain.Entities;
-
-namespace EventsWebApp.API.Domain
+﻿namespace EventsWebApp.API.Domain.Entities
 {
     public class Participant
     {

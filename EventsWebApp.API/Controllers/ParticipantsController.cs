@@ -1,4 +1,5 @@
-﻿using EventsWebApp.API.Domain;
+﻿using EventsWebApp.API.Domain.DTOs;
+using EventsWebApp.API.Domain.Entities;
 using EventsWebApp.API.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

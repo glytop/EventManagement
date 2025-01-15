@@ -1,4 +1,4 @@
-﻿namespace EventsWebApp.API.Domain
+﻿namespace EventsWebApp.API.Domain.DTOs
 {
     public class RegisterParticipantDto
     {

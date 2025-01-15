@@ -1,5 +1,4 @@
-﻿using EventsWebApp.API.Domain;
-using EventsWebApp.API.Domain.Entities;
+﻿using EventsWebApp.API.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventsWebApp.API.Infrastructure.Persistence

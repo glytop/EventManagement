@@ -1,4 +1,6 @@
-﻿namespace EventsWebApp.API.Domain.Interfaces
+﻿using EventsWebApp.API.Domain.Entities;
+
+namespace EventsWebApp.API.Domain.Interfaces
 {
     public interface IEventRepository
     {
