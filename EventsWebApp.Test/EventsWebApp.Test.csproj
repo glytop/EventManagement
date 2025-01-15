@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EventsWebApp.API\EventsWebApp.API.csproj" />
     <ProjectReference Include="..\EventsWebApp\EventsWebApp.API.csproj" />
   </ItemGroup>
 

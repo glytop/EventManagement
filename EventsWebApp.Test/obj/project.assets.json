@@ -8646,8 +8646,8 @@
     },
     "EventsWebApp.API/1.0.0": {
       "type": "project",
-      "path": "../EventsWebApp/EventsWebApp.API.csproj",
-      "msbuildProject": "../EventsWebApp/EventsWebApp.API.csproj"
+      "path": "../EventsWebApp.API/EventsWebApp.API.csproj",
+      "msbuildProject": "../EventsWebApp.API/EventsWebApp.API.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8688,6 +8688,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp.API\\EventsWebApp.API.csproj": {
+              "projectPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp.API\\EventsWebApp.API.csproj"
+            },
             "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.API.csproj": {
               "projectPath": "C:\\Users\\User\\source\\repos\\EventsWebApp\\EventsWebApp\\EventsWebApp.API.csproj"
             }

@@ -8,32 +8,32 @@ namespace EventsWebApp.API.Controllers
     [Route("api/[controller]")]
     public class ParticipantsController : ControllerBase
     {
-        private readonly IParticipantRepository _participantRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ParticipantsController(IParticipantRepository participantRepository)
+        public ParticipantsController(IUnitOfWork unitOfWork)
         {
-            _participantRepository = participantRepository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> RegisterParticipant(RegisterParticipantDto dto)
         {
-
             var participant = new Participant
             {
                 UserId = dto.UserId,
                 EventId = dto.EventId
             };
 
-            var registeredParticipant = await _participantRepository.RegisterParticipantAsync(participant);
+            var registeredParticipant = await _unitOfWork.Participants.RegisterParticipantAsync(participant);
+            await _unitOfWork.SaveChangesAsync();
 
-            return Ok();
+            return Ok(registeredParticipant);
         }
 
         [HttpGet("event/{eventId}")]
         public async Task<IActionResult> GetParticipantsByEventId(int eventId)
         {
-            var participants = await _participantRepository.GetParticipantsByEventIdAsync(eventId);
+            var participants = await _unitOfWork.Participants.GetParticipantsByEventIdAsync(eventId);
 
             if (participants.Count == 0)
             {
@@ -49,7 +49,7 @@ namespace EventsWebApp.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetParticipantById(int id)
         {
-            var participant = await _participantRepository.GetParticipantByIdAsync(id);
+            var participant = await _unitOfWork.Participants.GetParticipantByIdAsync(id);
 
             if (participant is null)
             {
@@ -65,7 +65,7 @@ namespace EventsWebApp.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> CancelParticipation(int id)
         {
-            var success = await _participantRepository.CancelParticipationAsync(id);
+            var success = await _unitOfWork.Participants.CancelParticipationAsync(id);
 
             if (!success)
             {
@@ -75,6 +75,7 @@ namespace EventsWebApp.API.Controllers
                 });
             }
 
+            await _unitOfWork.SaveChangesAsync();
             return Ok();
         }
     }

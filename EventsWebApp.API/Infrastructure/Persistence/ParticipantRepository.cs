@@ -62,7 +62,8 @@ namespace EventsWebApp.API.Infrastructure.Persistence
 
         public async Task<Participant?> RegisterParticipantAsync(Participant participant)
         {
-            var existingParticipant = await _context.Participants
+            var existingParticipant = await _context
+                .Participants
                 .FirstOrDefaultAsync(p => p.UserId == participant.UserId && p.EventId == participant.EventId);
 
             if (existingParticipant is not null)

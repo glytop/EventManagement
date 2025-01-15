@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace EventsWebApp.API.Infrastructure.Services
@@ -15,6 +16,16 @@ namespace EventsWebApp.API.Infrastructure.Services
             _configuration = configuration;
         }
 
+        public string GenerateRefreshToken()
+        {
+            var randomNumber = new byte[32];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+            }
+            return Convert.ToBase64String(randomNumber);
+        }
+
         public string GenerateToken(User user)
         {
             var jwtSettings = _configuration.GetSection("JwtSettings");
@@ -22,7 +33,7 @@ namespace EventsWebApp.API.Infrastructure.Services
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email)
+                new Claim(ClaimTypes.Email, user.Email),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!));

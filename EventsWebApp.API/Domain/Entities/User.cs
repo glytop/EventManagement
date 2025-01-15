@@ -9,7 +9,8 @@
         public string PasswordHash { get; set; } = null!;
         public DateTime DateOfBirth { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiryTime { get; set; }
         public ICollection<Participant> Participants { get; set; } = new List<Participant>();
     }
 }

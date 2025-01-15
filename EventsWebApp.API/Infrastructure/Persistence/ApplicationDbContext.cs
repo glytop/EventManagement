@@ -23,6 +23,16 @@ namespace EventsWebApp.API.Infrastructure.Persistence
                 .HasOne(p => p.Event)
                 .WithMany(e => e.Participants)
                 .HasForeignKey(p => p.EventId);
+
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.RefreshToken)
+                .HasMaxLength(512)
+                .IsRequired(false);
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.RefreshTokenExpiryTime)
+                .IsRequired(false);
         }
     }
 }

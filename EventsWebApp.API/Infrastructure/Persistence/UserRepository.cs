@@ -24,5 +24,17 @@ namespace EventsWebApp.API.Infrastructure.Persistence
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
+
+        public async Task<User?> GetUserByRefreshTokenAsync(string refreshToken)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.RefreshToken == refreshToken);
+        }
+
+        public async Task UpdateAsync(User user)
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

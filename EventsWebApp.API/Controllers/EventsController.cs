@@ -9,17 +9,17 @@ namespace EventsWebApp.API.Controllers
     [Route("api/[controller]")]
     public class EventsController : ControllerBase
     {
-        private readonly IEventRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public EventsController(IEventRepository repository)
+        public EventsController(IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] PaginationParams paginationParams)
         {
-            var eventsQuery = _repository.GetAllQueryable();
+            var eventsQuery = _unitOfWork.Events.GetAllQueryable();
 
             var pagedEvents = await eventsQuery
                 .Skip((paginationParams.PageNumber - 1) * paginationParams.PageSize)
@@ -46,7 +46,7 @@ namespace EventsWebApp.API.Controllers
         [HttpPost("{id}/add-image-url")]
         public async Task<IActionResult> AddImageUrl(int id, [FromBody] Event request)
         {
-            var evnt = await _repository.GetByIdAsync(id);
+            var evnt = await _unitOfWork.Events.GetByIdAsync(id);
             if (evnt is null)
             {
                 return NotFound(new
@@ -56,7 +56,7 @@ namespace EventsWebApp.API.Controllers
             }
 
             evnt.ImagePath = request.ImagePath;
-            await _repository.UpdateAsync(evnt);
+            await _unitOfWork.SaveChangesAsync();
 
             return Ok(new
             {
@@ -64,13 +64,10 @@ namespace EventsWebApp.API.Controllers
             });
         }
 
-
-
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var evnt = await _repository.GetByIdAsync(id);
+            var evnt = await _unitOfWork.Events.GetByIdAsync(id);
             if (evnt is null)
             {
                 return NotFound(new
@@ -95,39 +92,17 @@ namespace EventsWebApp.API.Controllers
                     p.User.FirstName,
                     p.User.LastName,
                     p.User.Email
-                })
-                .ToList()
+                }).ToList()
             };
 
             return Ok(result);
         }
 
-        [HttpGet("by-name/{name}")]
-        public async Task<IActionResult> GetByName(string name)
-        {
-            var evnt = await _repository.GetByNameAsync(name);
-            if (evnt is null)
-            {
-                return NotFound();
-            }
-            return Ok(evnt);
-        }
-
-        [HttpGet("search")]
-        public async Task<IActionResult> GetByCriteria([FromQuery] string criterion, [FromQuery] string value)
-        {
-            var events = await _repository.GetByCriteriaAsync(criterion, value);
-            if (events is null)
-            {
-                return NotFound();
-            }
-            return Ok(events);
-        }
-
         [HttpPost]
         public async Task<IActionResult> Create(Event evnt)
         {
-            await _repository.AddAsync(evnt);
+            await _unitOfWork.Events.AddAsync(evnt);
+            await _unitOfWork.SaveChangesAsync();
             return Ok(evnt);
         }
 
@@ -138,14 +113,17 @@ namespace EventsWebApp.API.Controllers
             {
                 return BadRequest();
             }
-            await _repository.UpdateAsync(evnt);
+
+            await _unitOfWork.Events.UpdateAsync(evnt);
+            await _unitOfWork.SaveChangesAsync();
             return Ok(evnt);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _repository.DeleteAsync(id);
+            await _unitOfWork.Events.DeleteAsync(id);
+            await _unitOfWork.SaveChangesAsync();
             return Ok();
         }
     }
