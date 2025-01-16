@@ -1,4 +1,5 @@
-﻿using EventsWebApp.API.Domain.Entities;
+﻿using EventsWebApp.API.Domain.DTOs;
+using EventsWebApp.API.Domain.Entities;
 using EventsWebApp.API.Domain.Interfaces;
 using EventsWebApp.API.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -79,18 +80,12 @@ namespace EventsWebApp.API.Controllers
             }
 
             var newToken = _jwtTokenService.GenerateToken(user);
-            var newRefreshToken = _jwtTokenService.GenerateRefreshToken();
-
-            user.RefreshToken = newRefreshToken;
-            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
-
-            await _unitOfWork.Users.UpdateAsync(user);
 
             return Ok(new
             {
-                Token = newToken,
-                RefreshToken = newRefreshToken
+                Token = newToken
             });
         }
+
     }
 }
