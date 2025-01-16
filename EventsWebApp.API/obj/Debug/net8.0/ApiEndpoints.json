@@ -83,7 +83,7 @@
     "Parameters": [
       {
         "Name": "evnt",
-        "Type": "EventsWebApp.API.Domain.Event",
+        "Type": "EventsWebApp.API.Domain.Entities.Event",
         "IsRequired": true
       }
     ],
@@ -120,7 +120,7 @@
       },
       {
         "Name": "evnt",
-        "Type": "EventsWebApp.API.Domain.Event",
+        "Type": "EventsWebApp.API.Domain.Entities.Event",
         "IsRequired": true
       }
     ],
@@ -157,7 +157,7 @@
       },
       {
         "Name": "request",
-        "Type": "EventsWebApp.API.Domain.Event",
+        "Type": "EventsWebApp.API.Domain.Entities.Event",
         "IsRequired": true
       }
     ],
@@ -221,7 +221,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "EventsWebApp.API.Domain.RegisterParticipantDto",
+        "Type": "EventsWebApp.API.Domain.DTOs.RegisterParticipantDto",
         "IsRequired": true
       }
     ],

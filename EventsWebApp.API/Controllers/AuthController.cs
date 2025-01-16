@@ -38,7 +38,6 @@ namespace EventsWebApp.API.Controllers
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
 
             await _unitOfWork.Users.UpdateAsync(user);
-            await _unitOfWork.SaveChangesAsync();
 
             return Ok(new
             {
@@ -62,7 +61,6 @@ namespace EventsWebApp.API.Controllers
             user.CreatedAt = DateTime.UtcNow;
 
             await _unitOfWork.Users.RegisterUserAsync(user);
-            await _unitOfWork.SaveChangesAsync();
 
             return CreatedAtAction(nameof(Register), new { id = user.Id }, user);
         }
@@ -87,7 +85,6 @@ namespace EventsWebApp.API.Controllers
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
 
             await _unitOfWork.Users.UpdateAsync(user);
-            await _unitOfWork.SaveChangesAsync();
 
             return Ok(new
             {

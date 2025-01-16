@@ -56,7 +56,6 @@ namespace EventsWebApp.API.Controllers
             }
 
             evnt.ImagePath = request.ImagePath;
-            await _unitOfWork.SaveChangesAsync();
 
             return Ok(new
             {
@@ -102,7 +101,6 @@ namespace EventsWebApp.API.Controllers
         public async Task<IActionResult> Create(Event evnt)
         {
             await _unitOfWork.Events.AddAsync(evnt);
-            await _unitOfWork.SaveChangesAsync();
             return Ok(evnt);
         }
 
@@ -115,7 +113,6 @@ namespace EventsWebApp.API.Controllers
             }
 
             await _unitOfWork.Events.UpdateAsync(evnt);
-            await _unitOfWork.SaveChangesAsync();
             return Ok(evnt);
         }
 
@@ -123,7 +120,6 @@ namespace EventsWebApp.API.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await _unitOfWork.Events.DeleteAsync(id);
-            await _unitOfWork.SaveChangesAsync();
             return Ok();
         }
     }

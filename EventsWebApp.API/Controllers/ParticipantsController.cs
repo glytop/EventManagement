@@ -27,7 +27,6 @@ namespace EventsWebApp.API.Controllers
             };
 
             var registeredParticipant = await _unitOfWork.Participants.RegisterParticipantAsync(participant);
-            await _unitOfWork.SaveChangesAsync();
 
             return Ok(registeredParticipant);
         }
@@ -78,7 +77,6 @@ namespace EventsWebApp.API.Controllers
                 });
             }
 
-            await _unitOfWork.SaveChangesAsync();
             return Ok();
         }
     }
