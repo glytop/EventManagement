@@ -350,3 +350,7 @@ C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\refint
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\EventsWebApp.API.pdb
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\EventsWebApp.API.genruntimeconfig.cache
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\ref\EventsWebApp.API.dll
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.API.staticwebassets.endpoints.json
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\staticwebassets\msbuild.EventsWebApp.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

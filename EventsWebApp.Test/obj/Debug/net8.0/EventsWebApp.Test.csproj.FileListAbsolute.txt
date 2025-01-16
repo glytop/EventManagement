@@ -172,3 +172,4 @@ C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\Event
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.API.exe
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.API.dll
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.API.pdb
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.API.staticwebassets.endpoints.json

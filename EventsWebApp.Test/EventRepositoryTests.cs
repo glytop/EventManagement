@@ -1,4 +1,4 @@
-﻿using EventsWebApp.API.Domain;
+﻿using EventsWebApp.API.Domain.Entities;
 using EventsWebApp.API.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 

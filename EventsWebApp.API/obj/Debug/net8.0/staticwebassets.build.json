@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "yObCAL3M1rqexM06ETwGG8h9EKrOgw2Xz4tKKgzjigM=",
+  "Hash": "3lURJloQihpFLFaQWkBb14LK07yByHD/QMZk6jbSIGk=",
   "Source": "EventsWebApp.API",
   "BasePath": "_content/EventsWebApp.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }
