@@ -6,12 +6,9 @@ namespace EventsWebApp.API.Domain.Interfaces
     {
         Task<IEnumerable<Event>> GetAllAsync();
         Task<Event?> GetByIdAsync(int id);
+        IQueryable<Event> GetEventsByCriterion(string criterion, string value);
         Task AddAsync(Event evnt);
         Task UpdateAsync(Event evnt);
         Task DeleteAsync(int id);
-        IQueryable<Event> GetAllQueryable();
-        Task<Event> GetByNameAsync(string name);
-        Task<List<Event>> GetByCriteriaAsync(string criterion, string value);
-        Task<Event> UpdateEventAsync(Event eventEntity);
     }
 }

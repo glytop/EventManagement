@@ -1,4 +1,4 @@
-﻿namespace EventsWebApp.API.Domain.DTOs
+﻿namespace EventsWebApp.API.Domain.Requests
 {
     public class RegisterRequest
     {

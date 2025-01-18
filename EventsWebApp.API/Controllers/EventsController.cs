@@ -1,6 +1,7 @@
-using EventsWebApp.API.Domain.DTOs;
+using EventsWebApp.API.Domain.Common;
 using EventsWebApp.API.Domain.Entities;
 using EventsWebApp.API.Domain.Interfaces;
+using EventsWebApp.API.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,64 +11,42 @@ namespace EventsWebApp.API.Controllers
     [Route("api/[controller]")]
     public class EventsController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly EventService _eventService;
 
-        public EventsController(IUnitOfWork unitOfWork)
+        public EventsController(EventService eventService)
         {
-            _unitOfWork = unitOfWork;
+            _eventService = eventService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] PaginationParams paginationParams)
         {
-            var eventsQuery = _unitOfWork.Events.GetAllQueryable();
+            var events = await _eventService.GetAllEventsAsync();
 
-            var pagedEvents = await eventsQuery
+            var pagedEvents = events
                 .Skip((paginationParams.PageNumber - 1) * paginationParams.PageSize)
-                .Take(paginationParams.PageSize)
-                .ToListAsync();
-
-            var totalItems = await eventsQuery.CountAsync();
+                .Take(paginationParams.PageSize);
 
             var response = new
             {
                 Data = pagedEvents,
                 Pagination = new
                 {
-                    CurrentPage = paginationParams.PageNumber,
+                    paginationParams.PageNumber,
                     paginationParams.PageSize,
-                    TotalItems = totalItems,
-                    TotalPages = (int)Math.Ceiling(totalItems / (double)paginationParams.PageSize)
+                    TotalItems = events.Count(),
+                    TotalPages = (int)Math.Ceiling(events.Count() / (double)paginationParams.PageSize)
                 }
             };
 
             return Ok(response);
         }
 
-        [HttpPost("{id}/add-image-url")]
-        public async Task<IActionResult> AddImageUrl(int id, [FromBody] Event request)
-        {
-            var evnt = await _unitOfWork.Events.GetByIdAsync(id);
-            if (evnt is null)
-            {
-                return NotFound(new
-                {
-                    Message = $"Event with ID {id} not found."
-                });
-            }
-
-            evnt.ImagePath = request.ImagePath;
-
-            return Ok(new
-            {
-                Message = "Image URL added successfully."
-            });
-        }
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var evnt = await _unitOfWork.Events.GetByIdAsync(id);
+            var evnt = await _eventService.GetEventByIdAsync(id);
+
             if (evnt is null)
             {
                 return NotFound(new
@@ -76,51 +55,42 @@ namespace EventsWebApp.API.Controllers
                 });
             }
 
-            var result = new
-            {
-                evnt.Id,
-                evnt.Name,
-                evnt.Description,
-                evnt.Date,
-                evnt.Location,
-                evnt.Category,
-                evnt.MaxParticipants,
-                evnt.ImagePath,
-                Participants = evnt.Participants.Select(p => new
-                {
-                    p.Id,
-                    p.User.FirstName,
-                    p.User.LastName,
-                    p.User.Email
-                }).ToList()
-            };
+            return Ok(evnt);
+        }
 
-            return Ok(result);
+        [HttpGet("search")]
+        public async Task<IActionResult> Search([FromQuery] string criterion, [FromQuery] string value)
+        {
+            var events = await _eventService.GetEventsByCriteriaAsync(criterion, value);
+            return Ok(events);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Event evnt)
+        public async Task<IActionResult> Create([FromBody] Event evnt)
         {
-            await _unitOfWork.Events.AddAsync(evnt);
-            return Ok(evnt);
+            await _eventService.AddEventAsync(evnt);
+            return CreatedAtAction(nameof(GetById), new { id = evnt.Id }, evnt);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Event evnt)
+        public async Task<IActionResult> Update(int id, [FromBody] Event evnt)
         {
             if (id != evnt.Id)
             {
-                return BadRequest();
+                return BadRequest(new
+                {
+                    Message = "Event ID mismatch."
+                });
             }
 
-            await _unitOfWork.Events.UpdateAsync(evnt);
-            return Ok(evnt);
+            await _eventService.UpdateEventAsync(evnt);
+            return Ok();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _unitOfWork.Events.DeleteAsync(id);
+            await _eventService.DeleteEventAsync(id);
             return Ok();
         }
     }

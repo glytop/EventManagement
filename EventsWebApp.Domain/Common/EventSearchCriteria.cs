@@ -1,4 +1,4 @@
-﻿namespace EventsWebApp.API.Domain.DTOs
+﻿namespace EventsWebApp.Domain.Common
 {
     public class EventSearchCriteria
     {

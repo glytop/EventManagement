@@ -1,6 +1,6 @@
 ﻿using EventsWebApp.API.Domain.DTOs;
 using EventsWebApp.API.Domain.Entities;
-using EventsWebApp.API.Domain.Interfaces;
+using EventsWebApp.API.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,11 +10,11 @@ namespace EventsWebApp.API.Controllers
     [Route("api/[controller]")]
     public class ParticipantsController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ParticipantService _participantService;
 
-        public ParticipantsController(IUnitOfWork unitOfWork)
+        public ParticipantsController(ParticipantService participantService)
         {
-            _unitOfWork = unitOfWork;
+            _participantService = participantService;
         }
 
         [HttpPost("register")]
@@ -23,18 +23,23 @@ namespace EventsWebApp.API.Controllers
             var participant = new Participant
             {
                 UserId = dto.UserId,
-                EventId = dto.EventId
+                EventId = dto.EventId,
+                RegisteredAt = DateTime.UtcNow
             };
 
-            var registeredParticipant = await _unitOfWork.Participants.RegisterParticipantAsync(participant);
+            await _participantService.RegisterParticipantAsync(participant);
 
-            return Ok(registeredParticipant);
+            return Ok(new
+            {
+                Message = "Participant registered successfully",
+                Participant = participant
+            });
         }
 
         [HttpGet("event/{eventId}")]
         public async Task<IActionResult> GetParticipantsByEventId(int eventId)
         {
-            var participants = await _unitOfWork.Participants.GetParticipantsByEventIdAsync(eventId);
+            var participants = await _participantService.GetParticipantsByEventIdAsync(eventId);
 
             if (participants.Count == 0)
             {
@@ -50,7 +55,7 @@ namespace EventsWebApp.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetParticipantById(int id)
         {
-            var participant = await _unitOfWork.Participants.GetParticipantByIdAsync(id);
+            var participant = await _participantService.GetParticipantByIdAsync(id);
 
             if (participant is null)
             {
@@ -67,7 +72,7 @@ namespace EventsWebApp.API.Controllers
         [Authorize(Policy = "MustBeResourceOwner")]
         public async Task<IActionResult> CancelParticipation(int id)
         {
-            var success = await _unitOfWork.Participants.CancelParticipationAsync(id);
+            var success = await _participantService.CancelParticipationAsync(id);
 
             if (!success)
             {
@@ -77,7 +82,10 @@ namespace EventsWebApp.API.Controllers
                 });
             }
 
-            return Ok();
+            return Ok(new
+            {
+                Message = "Participation cancelled successfully."
+            });
         }
     }
 }

@@ -354,3 +354,9 @@ C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\Events
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\staticwebassets\msbuild.EventsWebApp.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.Application.dll
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.Domain.dll
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.Infrastructure.dll
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.Application.pdb
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.Domain.pdb
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.Infrastructure.pdb

@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "EventsWebApp.API.Domain.Entities.LoginRequest",
+        "Type": "EventsWebApp.API.Domain.Requests.LoginRequest",
         "IsRequired": true
       }
     ],
