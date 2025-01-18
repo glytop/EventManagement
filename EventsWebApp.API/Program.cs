@@ -70,6 +70,7 @@ builder.Services.AddScoped<ParticipantService>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<EventService>();
 
+
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
