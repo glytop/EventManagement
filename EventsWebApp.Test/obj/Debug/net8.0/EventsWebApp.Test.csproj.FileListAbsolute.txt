@@ -179,3 +179,4 @@ C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\Event
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.Application.pdb
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.Domain.pdb
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\EventsWebApp.Infrastructure.pdb
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.Test\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll

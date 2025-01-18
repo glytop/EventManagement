@@ -1,6 +1,6 @@
-﻿using EventsWebApp.API.Domain.DTOs;
-using EventsWebApp.API.Domain.Entities;
-using EventsWebApp.API.Infrastructure.Services;
+﻿using EventsWebApp.Application.DTOs;
+using EventsWebApp.Application.Services;
+using EventsWebApp.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

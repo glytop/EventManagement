@@ -333,7 +333,6 @@ C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\Events
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\EventsWebApp.API.AssemblyInfoInputs.cache
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\EventsWebApp.API.AssemblyInfo.cs
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\EventsWebApp.API.csproj.CoreCompileInputs.cache
-C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\EventsWebApp.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\EventsWebApp.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\EventsWebApp.API.sourcelink.json
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\staticwebassets.build.json
@@ -360,3 +359,4 @@ C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\Events
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.Application.pdb
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.Domain.pdb
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.Infrastructure.pdb
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll

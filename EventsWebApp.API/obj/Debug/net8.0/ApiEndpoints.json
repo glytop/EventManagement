@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "EventsWebApp.API.Domain.Requests.LoginRequest",
+        "Type": "EventsWebApp.Application.Requests.LoginRequest",
         "IsRequired": true
       }
     ],
@@ -41,7 +41,7 @@
     "Parameters": [
       {
         "Name": "user",
-        "Type": "EventsWebApp.API.Domain.Entities.User",
+        "Type": "EventsWebApp.Domain.Entities.User",
         "IsRequired": true
       }
     ],
@@ -83,7 +83,7 @@
     "Parameters": [
       {
         "Name": "evnt",
-        "Type": "EventsWebApp.API.Domain.Entities.Event",
+        "Type": "EventsWebApp.Domain.Entities.Event",
         "IsRequired": true
       }
     ],
@@ -120,7 +120,7 @@
       },
       {
         "Name": "evnt",
-        "Type": "EventsWebApp.API.Domain.Entities.Event",
+        "Type": "EventsWebApp.Domain.Entities.Event",
         "IsRequired": true
       }
     ],
@@ -144,21 +144,21 @@
   },
   {
     "ContainingType": "EventsWebApp.API.Controllers.EventsController",
-    "Method": "AddImageUrl",
-    "RelativePath": "api/Events/{id}/add-image-url",
-    "HttpMethod": "POST",
+    "Method": "Search",
+    "RelativePath": "api/Events/search",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Name": "criterion",
+        "Type": "System.String",
+        "IsRequired": false
       },
       {
-        "Name": "request",
-        "Type": "EventsWebApp.API.Domain.Entities.Event",
-        "IsRequired": true
+        "Name": "value",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -221,7 +221,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "EventsWebApp.API.Domain.DTOs.RegisterParticipantDto",
+        "Type": "EventsWebApp.Application.DTOs.RegisterParticipantDto",
         "IsRequired": true
       }
     ],
