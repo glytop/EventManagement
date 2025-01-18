@@ -360,3 +360,4 @@ C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\Events
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.Domain.pdb
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\EventsWebApp.Infrastructure.pdb
 C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
+C:\Users\User\source\repos\EventsWebApp\EventsWebApp.API\obj\Debug\net8.0\EventsWebApp.API.MvcApplicationPartsAssemblyInfo.cs

@@ -59,9 +59,11 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IParticipantRepository, ParticipantRepository>();
+
 builder.Services.AddSingleton<JwtTokenService>();
 builder.Services.AddScoped<ParticipantService>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<EventService>();
 
 var app = builder.Build();
 
