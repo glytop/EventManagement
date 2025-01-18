@@ -1,6 +1,6 @@
-﻿using EventsWebApp.API.Domain.Entities;
-using EventsWebApp.API.Domain.Requests;
-using EventsWebApp.API.Infrastructure.Services;
+﻿using EventsWebApp.Application.Requests;
+using EventsWebApp.Application.Services;
+using EventsWebApp.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsWebApp.API.Controllers

@@ -393,3 +393,7 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Ignore bin and obj folders
+**/bin/
+**/obj/

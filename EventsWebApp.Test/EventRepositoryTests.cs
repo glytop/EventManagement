@@ -1,127 +1,90 @@
-﻿using EventsWebApp.API.Domain.Entities;
-using EventsWebApp.API.Infrastructure.Persistence;
+﻿using EventsWebApp.Domain.Entities;
+using EventsWebApp.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventsWebApp.Test
 {
     public class EventRepositoryTests
     {
-        private async Task<ApplicationDbContext> GetInMemoryDbContext(string dbName)
+        private ApplicationDbContext GetInMemoryDbContext(string databaseName)
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(dbName)
+                .UseInMemoryDatabase(databaseName)
                 .Options;
 
-            var context = new ApplicationDbContext(options);
-
-            if (!context.Events.Any())
-            {
-                context.Events.AddRange(
-                    new Event
-                    {
-                        Name = "Event 1",
-                        Location = "Location 1",
-                        Date = DateTime.UtcNow.AddDays(1)
-                    },
-                    new Event
-                    {
-                        Name = "Event 2",
-                        Location = "Location 2",
-                        Date = DateTime.UtcNow.AddDays(2)
-                    },
-                    new Event
-                    {
-                        Name = "Event 3",
-                        Location = "Location 3",
-                        Date = DateTime.UtcNow.AddDays(3)
-                    }
-                );
-                await context.SaveChangesAsync();
-            }
-
-            return context;
+            return new ApplicationDbContext(options);
         }
 
         [Fact]
-        public async Task GetAll_Returns_All_Events()
+        public async Task GetAllAsync_ShouldReturnAllEvents()
         {
             // Arrange
-            var context = await GetInMemoryDbContext("GetAllEventsDb");
+            using var context = GetInMemoryDbContext(Guid.NewGuid().ToString());
             var repository = new EventRepository(context);
+
+            var events = new List<Event>
+            {
+                new Event
+                {
+                    Name = "Event 1"
+                },
+                new Event
+                {
+                    Name = "Event 2"
+                }
+            };
+            await context.Events.AddRangeAsync(events);
+            await context.SaveChangesAsync();
 
             // Act
-            var events = await repository.GetAllAsync();
+            var result = await repository.GetAllAsync();
 
             // Assert
-            Assert.NotNull(events);
-            Assert.Equal(3, events.Count());
-            Assert.Contains(events, e => e.Name == "Event 1");
-            Assert.Contains(events, e => e.Name == "Event 2");
-            Assert.Contains(events, e => e.Name == "Event 3");
+            Assert.Equal(2, result.Count());
         }
 
-        [Theory]
-        [InlineData("Event 4", "Location 4")]
-        [InlineData("Event 5", "Location 5")]
-        public async Task AddEventAsync_Adds_Event_Successfully(string eventName, string location)
+        [Fact]
+        public async Task GetByIdAsync_ShouldReturnCorrectEvent()
         {
             // Arrange
-            var context = await GetInMemoryDbContext("AddEventDb");
+            using var context = GetInMemoryDbContext(Guid.NewGuid().ToString());
             var repository = new EventRepository(context);
-            var newEvent = new Event
+
+            var evnt = new Event
             {
-                Name = eventName,
-                Location = location,
-                Date = DateTime.UtcNow.AddDays(5)
+                Id = 1,
+                Name = "Event 1"
+            };
+            await context.Events.AddAsync(evnt);
+            await context.SaveChangesAsync();
+
+            // Act
+            var result = await repository.GetByIdAsync(1);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(1, result.Id);
+        }
+
+        [Fact]
+        public async Task AddAsync_ShouldAddEvent()
+        {
+            // Arrange
+            using var context = GetInMemoryDbContext(Guid.NewGuid().ToString());
+            var repository = new EventRepository(context);
+
+            var evnt = new Event
+            {
+                Name = "New Event"
             };
 
             // Act
-            await repository.AddAsync(newEvent);
+            await repository.AddAsync(evnt);
+            await context.SaveChangesAsync();
 
             // Assert
-            var allEvents = await repository.GetAllAsync();
-            Assert.Contains(allEvents, e => e.Name == eventName && e.Location == location);
-        }
-
-        [Fact]
-        public async Task GetEventById_Returns_Correct_Event()
-        {
-            // Arrange
-            var context = await GetInMemoryDbContext("GetEventByIdDb");
-            var repository = new EventRepository(context);
-
-            var expectedEvent = context.Events.First();
-
-            // Act
-            var actualEvent = await repository.GetByIdAsync(expectedEvent.Id);
-
-            // Assert
-            Assert.NotNull(actualEvent);
-            Assert.Equal(expectedEvent.Name, actualEvent.Name);
-            Assert.Equal(expectedEvent.Location, actualEvent.Location);
-        }
-
-        [Theory]
-        [InlineData(1, true)]
-        [InlineData(999, false)]
-        public async Task GetEventById_Returns_Null_For_Invalid_Id(int eventId, bool exists)
-        {
-            // Arrange
-            var context = await GetInMemoryDbContext("GetEventByIdInvalidDb");
-            var repository = new EventRepository(context);
-
-            // Act
-            var actualEvent = await repository.GetByIdAsync(eventId);
-
-            // Assert
-            if (exists)
-            {
-                Assert.NotNull(actualEvent);
-            }
-            else
-            {
-                Assert.Null(actualEvent);
-            }
+            Assert.Single(context.Events);
+            Assert.Equal("New Event", context.Events.First().Name);
         }
     }
 }

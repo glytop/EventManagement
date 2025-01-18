@@ -1,7 +1,7 @@
-using EventsWebApp.API.Domain.Interfaces;
-using EventsWebApp.API.Infrastructure.Middleware;
-using EventsWebApp.API.Infrastructure.Persistence;
-using EventsWebApp.API.Infrastructure.Services;
+using EventsWebApp.API.Middleware;
+using EventsWebApp.Application.Services;
+using EventsWebApp.Domain.Interfaces;
+using EventsWebApp.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -50,6 +50,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
+
 // Database configuration
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -59,6 +64,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IParticipantRepository, ParticipantRepository>();
+
 builder.Services.AddSingleton<JwtTokenService>();
 builder.Services.AddScoped<ParticipantService>();
 builder.Services.AddScoped<AuthService>();
