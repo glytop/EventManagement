@@ -55,7 +55,7 @@ namespace EventsWebApp.Infrastructure.Persistence
         public async Task DeleteAsync(int id)
         {
             var evnt = await _context.Events.FindAsync(id);
-            if (evnt != null)
+            if (evnt is not null)
             {
                 _context.Events.Remove(evnt);
             }

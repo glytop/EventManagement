@@ -67,7 +67,10 @@ namespace EventsWebApp.API.Controllers
         public async Task<IActionResult> Create([FromBody] Event evnt)
         {
             await _eventService.AddEventAsync(evnt);
-            return CreatedAtAction(nameof(GetById), new { id = evnt.Id }, evnt);
+            return CreatedAtAction(nameof(GetById), new
+            {
+                id = evnt.Id
+            }, evnt);
         }
 
         [HttpPut("{id}")]
