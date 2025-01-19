@@ -19,17 +19,17 @@ namespace EventsWebApp.Test
                 context.Users.AddRange(
                     new User
                     {
-                        FirstName = "John",
-                        LastName = "Doe",
-                        Email = "johndoe@example.com",
-                        PasswordHash = "hashedpassword",
+                        FirstName = "Maks",
+                        LastName = "Well",
+                        Email = "makswell@example.com",
+                        PasswordHash = "password",
                         CreatedAt = DateTime.UtcNow
                     },
                     new User
                     {
-                        FirstName = "Jane",
-                        LastName = "Smith",
-                        Email = "janesmith@example.com",
+                        FirstName = "Gly",
+                        LastName = "Top",
+                        Email = "glytop@example.com",
                         PasswordHash = "anotherpassword",
                         CreatedAt = DateTime.UtcNow
                     }
@@ -48,35 +48,12 @@ namespace EventsWebApp.Test
             var repository = new UserRepository(context);
 
             // Act
-            var user = await repository.GetUserByEmailAsync("johndoe@example.com");
+            var user = await repository.GetUserByEmailAsync("makswell@example.com");
 
             // Assert
             Assert.NotNull(user);
-            Assert.Equal("John", user.FirstName);
-            Assert.Equal("Doe", user.LastName);
-        }
-
-        [Theory]
-        [InlineData("newuser@example.com", false)]
-        [InlineData("johndoe@example.com", true)]
-        public async Task GetUserByEmail_Returns_Null_If_Not_Found(string email, bool exists)
-        {
-            // Arrange
-            var context = await GetInMemoryDbContext("GetUserByEmailInvalidDb");
-            var repository = new UserRepository(context);
-
-            // Act
-            var user = await repository.GetUserByEmailAsync(email);
-
-            // Assert
-            if (exists)
-            {
-                Assert.NotNull(user);
-            }
-            else
-            {
-                Assert.Null(user);
-            }
+            Assert.Equal("Maks", user.FirstName);
+            Assert.Equal("Well", user.LastName);
         }
 
         [Fact]

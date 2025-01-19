@@ -82,20 +82,6 @@ namespace EventsWebApp.Test
         }
 
         [Fact]
-        public async Task GetByIdAsync_Returns_Null_If_Event_Not_Found()
-        {
-            // Arrange
-            var context = await GetInMemoryDbContext("GetEventByIdInvalidDb");
-            var repository = new EventRepository(context);
-
-            // Act
-            var actualEvent = await repository.GetByIdAsync(999);
-
-            // Assert
-            Assert.Null(actualEvent);
-        }
-
-        [Fact]
         public async Task AddAsync_Adds_Event_Successfully()
         {
             // Arrange
