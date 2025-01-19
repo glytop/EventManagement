@@ -39,9 +39,9 @@ namespace EventsWebApp.Application.Services
             {
                 Id = participant.Id,
                 UserId = participant.UserId,
-                UserName = $"{participant.User?.FirstName} {participant.User?.LastName}",
+                UserName = $"{participant.User.FirstName} {participant.User.LastName}",
                 EventId = participant.EventId,
-                EventName = participant.Event?.Name,
+                EventName = participant.Event.Name,
                 RegisteredAt = participant.RegisteredAt
             };
         }
@@ -54,7 +54,7 @@ namespace EventsWebApp.Application.Services
             {
                 Id = p.Id,
                 UserId = p.UserId,
-                UserName = $"{p.User?.FirstName} {p.User?.LastName}",
+                UserName = $"{p.User.FirstName} {p.User.LastName}",
                 EventId = p.EventId,
                 RegisteredAt = p.RegisteredAt
             }).ToList();
