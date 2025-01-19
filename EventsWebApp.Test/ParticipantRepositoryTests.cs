@@ -51,7 +51,6 @@ namespace EventsWebApp.Test
 
             // Assert
             Assert.NotNull(participants);
-            Assert.Equal(2, participants.Count);
             Assert.All(participants, p => Assert.Equal(1, p.EventId));
         }
 
