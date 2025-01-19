@@ -56,6 +56,7 @@ namespace EventsWebApp.Application.Services
                 UserId = p.UserId,
                 UserName = $"{p.User.FirstName} {p.User.LastName}",
                 EventId = p.EventId,
+                EventName = p.Event.Name,
                 RegisteredAt = p.RegisteredAt
             }).ToList();
         }

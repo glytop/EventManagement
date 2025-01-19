@@ -15,12 +15,17 @@ namespace EventsWebApp.Infrastructure.Persistence
 
         public async Task<Participant?> GetByIdAsync(int participantId)
         {
-            return await _context.Participants.FindAsync(participantId);
+            return await _context.Participants
+                .Include(p => p.User)
+                .Include(p => p.Event)
+                .FirstOrDefaultAsync(p => p.Id == participantId);
         }
 
         public async Task<List<Participant>> GetByEventIdAsync(int eventId)
         {
             return await _context.Participants
+                .Include(p => p.User)
+                .Include(p => p.Event)
                 .Where(p => p.EventId == eventId)
                 .ToListAsync();
         }
